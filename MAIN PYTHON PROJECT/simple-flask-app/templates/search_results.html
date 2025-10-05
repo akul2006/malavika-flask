@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Search Results</title>
+</head>
+<body>
+    <header>
+        <div class="topnav" role="navigation">
+            <a href="{{ url_for('home') }}"> Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+            <a href="{{ url_for('login') }}">Login</a>
+            <div class="search-container">
+                <form action="{{ url_for('search') }}" method="GET">
+                    <input type="text" placeholder="Search.." name="search" value="{{ query if query else '' }}">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Search Results for "{{ query }}"</h2>
+        {% if results %}
+            <div class="product-grid">
+                {% for item in results %}
+                    <div class="product-card">
+                        <h3><a href="{{ url_for(item.url) }}">{{ item.name }}</a></h3>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No results found for "{{ query }}".</p>
+        {% endif %}
+    </div>
+
+    <footer style="text-align: center; margin-top: 40px; color: #777;">
+        <p>&copy; 2025 Staple Point. All rights reserved.</p>
+    </footer>
+</body>
+</html>

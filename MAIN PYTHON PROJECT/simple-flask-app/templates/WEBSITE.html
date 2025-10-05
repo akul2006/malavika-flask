@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stationary</title>
+
+   <link rel="stylesheet" href="../static/css/addition.css"/>
+
+   <body>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="flash-messages">
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+      <div class="topnav" role="navigation">
+        <a href="#home"> Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="Login.html">Login</a>
+        <div class="search-container">
+        <form action="/action_page.php">
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        </div>
+    </div>
+
+        
+    {% block content %}
+    <div class="container">
+        <div class="point" role="button">STAPLE<span>POINT</span></div>
+    </div>
+    <div class="slideshow-container">
+        <div class="slides">
+            <div class="slide">
+                <img src="https://scooboo.in/cdn/shop/files/smileyworld_banner.gif?v=1718893058&width=2400" alt="Slide 1">
+            </div>
+            <div class="slide">
+                <img src="https://scooboo.in/cdn/shop/files/bestsellers_banner.jpg?v=1716372722&width=2400" alt="Slide 2">
+            </div>
+            <div class="slide">
+                <img src="https://scooboo.in/cdn/shop/files/newtheme_new.jpg?v=1715944381&width=2400" alt="Slide 3">
+            </div>
+        </div>
+    </div>
+    <div class="products">
+        <div class="product-card" data-name="Notebook">
+            <img src="https://scooboo.in/cdn/shop/collections/CI-notebook_1.jpg?v=1715847707&width=750" alt="Notebook">
+            <b><a href="Notebook.html" style="color: black; font-size: 18px;">Notebook</a></b>
+            <p>High-quality lined notebook for all your notes.</p>
+        </div>
+        <div class="product-card" data-name="Journals">
+            <img src="https://scooboo.in/cdn/shop/files/journals-892953.webp?v=1721047210&width=750" alt="Pen Set">
+            <b><a href="Journal.html" style="color: black; font-size: 18px;">Journals</a></b>
+            <p>Beautiful journals to make your thoughts more attractive.</p>
+        </div>
+        <div class="product-card" data-name="Colour Pencils">
+            <img src="https://scooboo.in/cdn/shop/files/coloured-pencils-745798.webp?v=1721047738&width=750" alt="Colour Pencils">
+            <b><a href="Colour Pencils.html" style="color: black; font-size: 18px;">Colour pencils</a></b>
+            <p>Imagine the world,fill various colours in them.</p>
+        </div>
+        <div class="product-card" data-name="Sticky Notes">
+            <img src="https://scooboo.in/cdn/shop/collections/CI-sticky_notes_1.jpg?v=1715848078&width=750;;" alt="Sticky Notes">
+            <b><a href="Sticky Notes.html" style="color: black; font-size: 18px;">Sticky Notes</a></b>
+            <p>Colorful sticky notes for reminders.</p>
+        </div>
+        <div class="product-card" data-name="Notepads">
+            <img src="https://scooboo.in/cdn/shop/collections/CI-notepad_1.jpg?v=1715847896&width=750" alt="Notepads">
+            <b><a href="Notepads.html" style="color: black; font-size: 18px;">Notepads</a></b>
+            <p>Check,conquer,achieve</p>
+        </div>
+        <div class="product-card" data-name="Highlighters">
+            <img src="https://scooboo.in/cdn/shop/collections/highlighters-709675.jpg?v=1715670519&width=750" alt="Highlighters">
+            <b><a href="highlighters.html" style="color: black; font-size: 18px;">Highlighters</a></b>
+            <p>Illuminate your ideas</p>
+        </div>
+        <div class="product-card" data-name="Pencils">
+            <img src="https://scooboo.in/cdn/shop/collections/pencil_collection_1.jpg?v=1715670274&width=750" alt="Pencils">
+            <b><a href="Pencils.html" style="color: black; font-size: 18px;">Pencils</a></b>
+            <p>Create with every stroke</p>
+        </div>
+        <div class="product-card" data-name="Pens">
+            <img src="https://scooboo.in/cdn/shop/collections/pens_collection-CI_2.jpg?v=1715670252&width=750" alt="Pens">
+            <b><a href="Pens.html" style="color: black; font-size: 18px;">Pens</a></b>
+            <p>Check,conquer,achieve</p>
+        </div>
+        <div class="product-card" data-name="Earsers and Correcters">
+            <img src="https://scooboo.in/cdn/shop/collections/eraser-correction-935962.jpg?v=1715847460&width=750" alt="Earsers and Correcters">
+            <b><a href="Eraser and corrector.html" style="color: black; font-size: 18px;">Earsers and Correcters</a></b>
+            <p>Check,conquer,achieve</p>
+        </div>
+        <div class="product-card" data-name="Paperclips,Rubber bands">
+            <img src="https://scooboo.in/cdn/shop/collections/CI-paperclips_1.jpg?v=1715670842&width=750" alt="Paperclips">
+            <b><a href="Paperclips.html" style="color: black; font-size: 18px;">Paperclips</a></b>
+            <p>Check,conquer,achieve</p>
+        </div>
+
+    </div>
+
+    <br>
+    <div style="text-align: center;">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+    {% endblock %}
+
+    <footer style="text-align: center; margin-top: 40px; color: #777;">
+        <p>&copy; 2025 Staple Point. All rights reserved.</p>
+    </footer>
+
+   </body>
+</html>

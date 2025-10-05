@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Create New Account</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <style>
+      body {
+    background-color: #e9ecef;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.account-container {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 350px;
+}
+
+.account-container h2 {
+    margin-bottom: 24px;
+    color: #343a40;
+    text-align: center;
+}
+
+.account-container label {
+    display: block;
+    margin-bottom: 8px;
+    color: #495057;
+    font-weight: 600;
+}
+
+.account-container input[type="text"],
+.account-container input[type="email"],
+.account-container input[type="password"] {
+    width: 100%;
+    padding: 12px 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.account-container input[type="text"]:focus,
+.account-container input[type="email"]:focus,
+.account-container input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.account-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.account-container button:hover {
+    background-color: #0056b3;
+}
+
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+    </style>
+  </head>
+
+  <body>
+    <div class="account-container">
+      <h2>Create a New Account</h2>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="flash-messages">
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+      <form method="POST">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" name="confirm-password"
+          required>
+
+        <button type="submit">Create Account</button>
+
+        <br><br>
+
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+      </form>
+    </div>
+  </body>
+</html>
