@@ -23,6 +23,16 @@ class User(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+class ContactMessage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    message = db.Column(db.Text, nullable=False)
+    timestamp = db.Column(db.DateTime, default=db.func.now())
+
+    def __repr__(self):
+        return f'<ContactMessage {self.email}>'
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -31,8 +41,18 @@ def home():
 def about():
     return render_template('about.html')
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        message = request.form['message']
+
+        new_message = ContactMessage(name=name, email=email, message=message)
+        db.session.add(new_message)
+        db.session.commit()
+        flash('Your message has been sent successfully!', 'success')
+        return redirect(url_for('contact'))
     return render_template('contact.html')
 
 @app.route('/login', methods=['GET', 'POST'])
